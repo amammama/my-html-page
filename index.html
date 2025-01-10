@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توثيق الصفحات</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="authenticated" style="display: block;">
+        <h1>انت موثق بالفعل</h1>
+        <a class="button" href="#verified">اذهب إلى صفحة التوثيق</a>
+    </div>
+
+    <div id="verified" style="display: none;">
+        <h1>تم التوثيق</h1>
+        <a class="button" href="#authenticated">اذهب إلى صفحة الموثق بالفعل</a>
+    </div>
+
+    <script>
+        // Simple navigation between the two sections
+        const authenticatedDiv = document.getElementById('authenticated');
+        const verifiedDiv = document.getElementById('verified');
+
+        if (window.location.hash === '#verified') {
+            authenticatedDiv.style.display = 'none';
+            verifiedDiv.style.display = 'block';
+        } else {
+            authenticatedDiv.style.display = 'block';
+            verifiedDiv.style.display = 'none';
+        }
+
+        // Update the view based on the hash change
+        window.onhashchange = function() {
+            if (window.location.hash === '#verified') {
+                authenticatedDiv.style.display = 'none';
+                verifiedDiv.style.display = 'block';
+            } else {
+                authenticatedDiv.style.display = 'block';
+                verifiedDiv.style.display = 'none';
+            }
+        };
+    </script>
+
+</body>
+</html>
